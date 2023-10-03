@@ -7,6 +7,8 @@ public class MovimientoBus : MonoBehaviour
     public Vector3 Movimiento;
     public float Velocidad;
     public float velocidadY;
+    public float incAceleracion;
+    public float aceleracion;
     public string IndicadorIdle = "down";
     private Rigidbody2D myRigidbody;
     private new Transform transform;
@@ -14,13 +16,35 @@ public class MovimientoBus : MonoBehaviour
     public bool MoviendoseEnDireccionY = false;
     public bool InvertirEjes;
     public bool InvertirSentido;
+
     // Start is called before the first frame update
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         transform = GetComponent<Transform>();
     }
-
+    void acelerar(float velMax)
+    {
+        if (aceleracion > velMax)
+        {
+            aceleracion = velMax;
+        }
+        else
+        {
+            aceleracion += incAceleracion * Time.deltaTime;
+        }
+    }
+    void desacelerar()
+    {
+        if (aceleracion < 0f)
+        {
+            aceleracion = 0f;
+        }
+        else
+        {
+            aceleracion -= incAceleracion * Time.deltaTime * 3;
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -28,10 +52,12 @@ public class MovimientoBus : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             Velocidad = 3.5f;
+            incAceleracion = 3.5f;
             velocidadY = 1.5f;
         }
         else
         {
+            incAceleracion = 2f;
             velocidadY = 1.5f;
             Velocidad = 1.5f;
         }
@@ -50,16 +76,24 @@ public class MovimientoBus : MonoBehaviour
 
         if (Movimiento.x >= 0.5f)
         {
-   
+            acelerar(Velocidad);
             //gameObject.GetComponent<Animator>().SetBool("movingside", true);
-            myRigidbody.velocity = new Vector2(Movimiento.x * Velocidad, myRigidbody.velocity.y);
+            myRigidbody.velocity = new Vector2(Movimiento.x * aceleracion, myRigidbody.velocity.y);
             MoviendoseEnDireccionX = true;
         }
         if (Movimiento.x <= -0.5f)
         {
-            //gameObject.GetComponent<Animator>().SetBool("movingside", true);
+            desacelerar();
 
-            myRigidbody.velocity = new Vector2(Movimiento.x * Velocidad * 2f, myRigidbody.velocity.y);
+            if (transform.position.x > -6f)
+            {
+                myRigidbody.velocity = new Vector2(Movimiento.x * Velocidad  * 2f, myRigidbody.velocity.y);
+            }
+            else
+            {
+                myRigidbody.velocity = new Vector2(0f, myRigidbody.velocity.y);
+            }
+            //gameObject.GetComponent<Animator>().SetBool("movingside", true);
             MoviendoseEnDireccionX = true;
         }
         if (Movimiento.y >= 0.5f)
@@ -77,10 +111,19 @@ public class MovimientoBus : MonoBehaviour
 
         if (Movimiento.x < 0.4f && Movimiento.x > -0.4f)
         {
+            if (transform.position.x > -6f)
+            {
+                myRigidbody.velocity = new Vector2(-Velocidad, myRigidbody.velocity.y);
+
+            }
+            else
+            {
+                myRigidbody.velocity = new Vector2(0f, myRigidbody.velocity.y);
+            }
+
             //gameObject.GetComponent<Animator>().SetBool("movingside", false);
             //gameObject.GetComponent<Animator>().SetBool("check_idle", true);
-            myRigidbody.velocity = new Vector2(0f, myRigidbody.velocity.y);
-            MoviendoseEnDireccionX = false;
+            //aceleracion = 0f;
         }
         if (Movimiento.y < 0.4f && Movimiento.y > -0.4f)
         {
@@ -91,12 +134,20 @@ public class MovimientoBus : MonoBehaviour
         }
         if (Movimiento.y == 0f && Movimiento.x == 0f)
         {
+            MoviendoseEnDireccionY = false;
+            MoviendoseEnDireccionX = false;
+            //aceleracion = 0f;
+            desacelerar();
             if (transform.position.x > -6f)
             {
-                myRigidbody.velocity = new Vector2(-1.5f, 0f);
-                MoviendoseEnDireccionY = false;
-                MoviendoseEnDireccionX = false;
+                myRigidbody.velocity = new Vector2(-Velocidad + aceleracion, 0f);
+               
+            }
+            else
+            {
+                myRigidbody.velocity = new Vector2(0f, 0f);
             }
         }
+        
     }
 }
