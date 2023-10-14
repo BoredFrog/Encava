@@ -17,6 +17,8 @@ public class MovimientoBus : MonoBehaviour
     public bool InvertirEjes;
     public bool InvertirSentido;
 
+    public AudioSource audiox;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +51,11 @@ public class MovimientoBus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.Q))
+        {
+            audiox.Play();
+        }
+
         if (Input.GetKey(KeyCode.Space))
         {
             Velocidad = 3.5f;
