@@ -51,7 +51,7 @@ public class MovimientoBus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             audiox.Play();
         }
