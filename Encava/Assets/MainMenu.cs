@@ -17,6 +17,10 @@ public class MainMenu : MonoBehaviour
         musica.transicion = true;
         StartCoroutine(ChangeScene());
     }
+    public void cambiarMusica()
+    {
+        PlayerPrefs.SetFloat("volumen",musica.musica.volume);
+    }
     public IEnumerator ChangeScene()
     {
         yield return new WaitForSeconds(2.5f);

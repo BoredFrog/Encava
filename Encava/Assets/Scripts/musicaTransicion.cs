@@ -5,7 +5,7 @@ using UnityEngine;
 public class musicaTransicion : MonoBehaviour
 {
     public bool transicion;
-    private AudioSource musica;
+    public AudioSource musica;
     // Start is called before the first frame update
     void Start()
     {
