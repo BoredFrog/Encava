@@ -3544,6 +3544,9 @@ MonoBehaviour:
   spawnDeEnemigos: {fileID: 330798182}
   movimientoPlayer: {fileID: 1558291374}
   postesVelocidad: {fileID: 414719846}
+  textoMusica: {fileID: 9451359}
+  textoScore: {fileID: 1167531304}
+  musica: {fileID: 527193772}
 --- !u!1 &1755805967
 GameObject:
   m_ObjectHideFlags: 0

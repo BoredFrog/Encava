@@ -28,6 +28,7 @@ public class salsaChoose : MonoBehaviour
     }
     IEnumerator animationTrigger()
     {
+        StartCoroutine(checkFinish());
         funcionActive = true;
         timeOffset = false;
         yield return new WaitForSeconds(3);
@@ -39,6 +40,36 @@ public class salsaChoose : MonoBehaviour
         {
             funcionActive = false;
             animador.SetTrigger("fade");
+        }
+    }
+
+    IEnumerator checkFinish()
+    {
+        var waitForClipRemainingTime = new WaitForSeconds(salsaSource.clip.length);
+        yield return waitForClipRemainingTime;
+        yield return new WaitForSeconds(1f);
+        if (salsaSource.isPlaying == false)
+        {
+            currentSong++;
+            if (currentSong > audioClips.Length - 1)
+            {
+                currentSong = 0;
+            }
+            salsaSource.clip = audioClips[currentSong];
+            salsaSource.Play();
+            texto.text = songsName[currentSong];
+
+
+            timeOffset = true;
+            if (animador.GetCurrentAnimatorStateInfo(0).IsName("FadeOut"))
+            {
+                if (funcionActive == false) { StartCoroutine(animationTrigger()); }
+            }
+            else
+            {
+                animador.SetTrigger("fade");
+                StartCoroutine(animationTrigger());
+            }
         }
     }
 
