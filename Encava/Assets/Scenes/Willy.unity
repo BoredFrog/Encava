@@ -587,7 +587,7 @@ MonoBehaviour:
   - {fileID: 437076975276250609, guid: c62ce0ead72aeae4bb61f4e57d911baa, type: 3}
   - {fileID: 5823631486767613827, guid: 0d252d2b55b06bf4eb3561d7d5b083a5, type: 3}
   - {fileID: 4048406788145621581, guid: 61956a13bff41f24cbb822898f193311, type: 3}
-  tiempo: 3
+  tiempo: 2.5
 --- !u!1 &342296121
 GameObject:
   m_ObjectHideFlags: 0
@@ -2847,6 +2847,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   texto: {fileID: 0}
+  scoreFalso: 0
+  spawneadorEnemigo: {fileID: 330798184}
 --- !u!1 &1214364030
 GameObject:
   m_ObjectHideFlags: 0
@@ -3515,7 +3517,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.17027235, y: -0.95945567}
+  m_Offset: {x: 0.48672873, y: -0.95945567}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3526,7 +3528,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.5296774, y: 0.9583627}
+  m_Size: {x: 3.2156754, y: 0.9583627}
   m_EdgeRadius: 0
 --- !u!114 &1558291381
 MonoBehaviour:
@@ -3547,6 +3549,10 @@ MonoBehaviour:
   textoMusica: {fileID: 9451359}
   textoScore: {fileID: 1167531304}
   musica: {fileID: 527193772}
+  aS: {fileID: 2059922387}
+  deathTrack:
+  - {fileID: 8300000, guid: 1cc3a9b4f23729e46a374bd4a9b4fe5f, type: 3}
+  - {fileID: 8300000, guid: 180fee4a90f35df44b2dc07079bec16d, type: 3}
 --- !u!1 &1755805967
 GameObject:
   m_ObjectHideFlags: 0
