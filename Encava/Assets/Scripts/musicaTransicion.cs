@@ -10,6 +10,10 @@ public class musicaTransicion : MonoBehaviour
     void Start()
     {
         musica = GetComponent<AudioSource>();
+        if (PlayerPrefs.HasKey("volumen"))
+        {
+            musica.volume = PlayerPrefs.GetFloat("volumen");
+        }
 
     }
 

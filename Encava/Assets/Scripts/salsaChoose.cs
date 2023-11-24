@@ -19,16 +19,17 @@ public class salsaChoose : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.HasKey("volume"))
-        {
-            salsaSource.volume = PlayerPrefs.GetFloat("volumen");
-        }
+
        
         currentSong = Random.Range(0, audioClips.Length);
         salsaSource = GetComponent<AudioSource>();
         salsaSource.clip = audioClips[currentSong];
         texto.text = songsName[currentSong];
         salsaSource.Play();
+        if (PlayerPrefs.HasKey("volumen"))
+        {
+            salsaSource.volume = PlayerPrefs.GetFloat("volumen");
+        }
         StartCoroutine(animationTrigger());
     }
     IEnumerator animationTrigger()

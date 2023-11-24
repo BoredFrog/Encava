@@ -18,7 +18,7 @@ public class menuScore : MonoBehaviour
     public void updateScore()
     {
         textoScore.text = "" + Mathf.Round(puntaje.score) + " m";
-        textoHiScore.text = "" + PlayerPrefs.GetInt("hiScore") + " m";
+        textoHiScore.text = "" + (PlayerPrefs.GetInt("hiScore")+1) + " m";
     }
     public void reloadScene()
     {
@@ -26,7 +26,7 @@ public class menuScore : MonoBehaviour
     }
     public void backScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
     }
     // Update is called once per frame
     void Update()
