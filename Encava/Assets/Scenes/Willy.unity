@@ -4984,6 +4984,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1726317002}
   - component: {fileID: 1726317003}
+  - component: {fileID: 1726317004}
   m_Layer: 5
   m_Name: dross}
   m_TagString: Untagged
@@ -5107,6 +5108,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1726317004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726317001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5cf41c828f2e364e99d673a1c240215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: c6c9a7fdac6bad04f861715d1018975f, type: 3}
+  - {fileID: 8300000, guid: 18ce69dbb58cc1d408af1f0507884a9b, type: 3}
+  - {fileID: 8300000, guid: 31cb22e3eab3c334f84f6e757421fae1, type: 3}
+  currentSong: 0
 --- !u!1 &1755805967
 GameObject:
   m_ObjectHideFlags: 0
